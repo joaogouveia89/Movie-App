@@ -8,9 +8,9 @@ import br.com.movieapp.moviePopularFeature.domain.repository.MoviePopularReposit
 import br.com.movieapp.moviePopularFeature.domain.source.MoviePopularRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 
-class MoviePopularRepositoryImpl constructor(
+class MoviePopularRepositoryImpl(
     private val remoteDataSource: MoviePopularRemoteDataSource
-): MoviePopularRepository {
+) : MoviePopularRepository {
     override fun getPopularMovies(pagingConfig: PagingConfig): Flow<PagingData<Movie>> =
         Pager(
             config = pagingConfig,

@@ -10,14 +10,14 @@ import java.io.IOException
 
 class MoviePagingSource(
     private val remoteDataSource: MoviePopularRemoteDataSource
-): PagingSource<Int, Movie>() {
+) : PagingSource<Int, Movie>() {
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? =
         state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(LIMIT) ?: anchorPage?.nextKey?.minus(LIMIT)
         }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie>{
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val pageNumber = params.key ?: 1
             val response = remoteDataSource.getPopularMovies(
@@ -27,17 +27,17 @@ class MoviePagingSource(
 
             LoadResult.Page(
                 data = movies.toMovie(),
-                prevKey = if(pageNumber == 1) null else pageNumber - 1,
-                nextKey = if(movies.isEmpty()) null else pageNumber + 1
+                prevKey = if (pageNumber == 1) null else pageNumber - 1,
+                nextKey = if (movies.isEmpty()) null else pageNumber + 1
             )
-        } catch (exception: IOException){
+        } catch (exception: IOException) {
             return LoadResult.Error(exception)
-        }catch (exception: HttpException){
+        } catch (exception: HttpException) {
             return LoadResult.Error(exception)
         }
     }
 
-    companion object{
+    companion object {
         private const val LIMIT = 20
     }
 

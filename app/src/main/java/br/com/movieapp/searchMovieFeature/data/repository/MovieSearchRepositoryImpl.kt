@@ -12,11 +12,11 @@ import javax.inject.Inject
 
 class MovieSearchRepositoryImpl @Inject constructor(
     private val remoteDataSource: MovieSearchRemoteDataSource
-): MovieSearchRepository {
+) : MovieSearchRepository {
     override fun getSearchMovies(
         query: String,
         pagingConfig: PagingConfig
-    ): Flow<PagingData<MovieSearch>>{
+    ): Flow<PagingData<MovieSearch>> {
         return Pager(
             config = pagingConfig,
             pagingSourceFactory = { remoteDataSource.getSearchMoviePagingSource(query = query) }

@@ -35,22 +35,22 @@ fun MovieContent(
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxSize()
-        ){
-            items(pagingMovies.itemCount){index ->
+        ) {
+            items(pagingMovies.itemCount) { index ->
                 val movie = pagingMovies[index]
                 movie?.let {
                     MovieItem(
                         voteAverage = it.voteAverage,
                         imageUrl = it.imageUrl,
                         id = it.id,
-                        onClick = {movieId ->
+                        onClick = { movieId ->
                             onClick(movieId)
                         }
                     )
                 }
             }
             pagingMovies.apply {
-                when{
+                when {
                     loadState.refresh is LoadState.Loading -> {
                         item(
                             span = {
@@ -60,6 +60,7 @@ fun MovieContent(
                             LoadingView()
                         }
                     }
+
                     loadState.append is LoadState.Loading -> {
                         item(
                             span = {
@@ -69,24 +70,26 @@ fun MovieContent(
                             LoadingView()
                         }
                     }
+
                     loadState.refresh is LoadState.Error -> {
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan)
                             }
-                        )  {
+                        ) {
                             ErrorScreen(
                                 message = "Verifique sua conexão com a internet",
                                 retry = { retry() }
                             )
                         }
                     }
+
                     loadState.append is LoadState.Error -> {
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan)
                             }
-                        )  {
+                        ) {
                             ErrorScreen(
                                 message = "Verifique sua conexão com a internet",
                                 retry = { retry() }

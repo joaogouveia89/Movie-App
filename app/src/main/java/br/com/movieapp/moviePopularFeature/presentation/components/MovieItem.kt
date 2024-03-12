@@ -33,7 +33,7 @@ fun MovieItem(
 ) {
     Box(
         modifier = modifier
-    ){
+    ) {
         MovieRate(
             rate = voteAverage,
             modifier = modifier
@@ -78,7 +78,7 @@ fun MovieItem(
 
 @Preview
 @Composable
-fun MovieItemPreview(){
+fun MovieItemPreview() {
     MovieItem(
         modifier = Modifier,
         voteAverage = 7.2,

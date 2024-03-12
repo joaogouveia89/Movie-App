@@ -13,7 +13,7 @@ interface GetPopularMoviesUseCase {
 
 class GetPopularMoviesUseCaseImpl @Inject constructor(
     private val repository: MoviePopularRepository
-): GetPopularMoviesUseCase{
+) : GetPopularMoviesUseCase {
     override fun invoke(): Flow<PagingData<Movie>> =
         repository.getPopularMovies(
             pagingConfig = PagingConfig(

@@ -14,11 +14,11 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieSearchViewModel @Inject constructor(
     private val getMovieSearchUseCase: GetMovieSearchUseCase
-) : ViewModel(){
+) : ViewModel() {
     var uiState by mutableStateOf(MovieSearchState())
         private set
 
-    fun fetch(query: String = ""){
+    fun fetch(query: String = "") {
         val movies = getMovieSearchUseCase.invoke(
             params = GetMovieSearchUseCase.Params(
                 query = query
@@ -28,8 +28,8 @@ class MovieSearchViewModel @Inject constructor(
         uiState = uiState.copy(movies = movies)
     }
 
-    fun event(event: MovieSearchEvent){
-        uiState = when(event){
+    fun event(event: MovieSearchEvent) {
+        uiState = when (event) {
             is MovieSearchEvent.EnteredQuery -> {
                 uiState.copy(query = event.value)
             }

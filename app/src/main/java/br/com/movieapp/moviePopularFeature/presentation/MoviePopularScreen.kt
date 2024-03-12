@@ -32,11 +32,11 @@ fun MoviePopularScreen(
                 backgroundColor = black
             )
         }
-    ){paddingValues ->
+    ) { paddingValues ->
         MovieContent(
             pagingMovies = movies,
             paddingValues = paddingValues,
-            onClick = {movieId ->
+            onClick = { movieId ->
                 UtilFunctions.logInfo("MOVIE_ID", movieId.toString())
                 navigateToDetailMovie(movieId)
             }

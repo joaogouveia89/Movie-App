@@ -26,21 +26,22 @@ fun BottomNavigationBar(
 
     BottomNavigation(
         contentColor = yellow,
-        backgroundColor = black) {
+        backgroundColor = black
+    ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
 
         val currentRoute = navBackStackEntry?.destination?.route
 
-        items.forEach {destination -> 
+        items.forEach { destination ->
             BottomNavigationItem(
                 selected = currentRoute == destination.route,
                 onClick = {
-                          navController.navigate(destination.route){
-                              // the new screen is put on the top of the navigation stack
-                              launchSingleTop = true
-                          }
+                    navController.navigate(destination.route) {
+                        // the new screen is put on the top of the navigation stack
+                        launchSingleTop = true
+                    }
                 },
-                icon = { 
+                icon = {
                     Icon(
                         imageVector = destination.icon,
                         contentDescription = null
@@ -61,6 +62,6 @@ fun BottomNavigationBar(
 
 @Preview
 @Composable
-fun BottomNavigationBarPreview(){
+fun BottomNavigationBarPreview() {
     BottomNavigationBar(navController = rememberNavController())
 }

@@ -11,7 +11,7 @@ import java.io.IOException
 class MovieSearchPagingSource(
     private val query: String,
     private val remoteDataSource: MovieSearchRemoteDataSource
-): PagingSource<Int, MovieSearch>() {
+) : PagingSource<Int, MovieSearch>() {
     override fun getRefreshKey(state: PagingState<Int, MovieSearch>): Int? =
         state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
@@ -30,17 +30,17 @@ class MovieSearchPagingSource(
 
             LoadResult.Page(
                 data = movies.toMovieSearch(),
-                prevKey = if(pageNumber == 1) null else pageNumber - 1,
-                nextKey = if(movies.isEmpty()) null else pageNumber + 1
+                prevKey = if (pageNumber == 1) null else pageNumber - 1,
+                nextKey = if (movies.isEmpty()) null else pageNumber + 1
             )
-        } catch (exception: IOException){
+        } catch (exception: IOException) {
             return LoadResult.Error(exception)
-        }catch (exception: HttpException){
+        } catch (exception: HttpException) {
             return LoadResult.Error(exception)
         }
     }
 
-    companion object{
+    companion object {
         private const val LIMIT = 20
     }
 }

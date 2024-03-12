@@ -45,6 +45,6 @@ fun MovieRate(
 
 @Preview
 @Composable
-fun MovieRatePreview(){
+fun MovieRatePreview() {
     MovieRate(modifier = Modifier, rate = 7.1)
 }

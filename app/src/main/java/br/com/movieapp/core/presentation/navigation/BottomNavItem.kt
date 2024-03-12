@@ -11,19 +11,19 @@ sealed class BottomNavItem(
     val icon: ImageVector,
     val route: String
 ) {
-    object MoviePopular: BottomNavItem(
+    object MoviePopular : BottomNavItem(
         title = "Filmes populares",
         icon = Icons.Default.Movie,
         route = "movie_popular_screen"
     )
 
-    object MovieSearch: BottomNavItem(
+    object MovieSearch : BottomNavItem(
         title = "Pesquisar",
         icon = Icons.Default.Search,
         route = "movie_search"
     )
 
-    object MovieFavorite: BottomNavItem(
+    object MovieFavorite : BottomNavItem(
         title = "Favoritos",
         icon = Icons.Default.Favorite,
         route = "movie_favorites"

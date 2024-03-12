@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class MoviePopularRemoteDataSourceImpl @Inject constructor(
     private val service: MovieService
-): MoviePopularRemoteDataSource {
+) : MoviePopularRemoteDataSource {
     override fun getPopularMoviesPagingSource(): MoviePagingSource =
         MoviePagingSource(this)
 

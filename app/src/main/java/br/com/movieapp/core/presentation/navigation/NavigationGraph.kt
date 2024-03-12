@@ -15,8 +15,8 @@ fun NavigationGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
         startDestination = BottomNavItem.MoviePopular.route
-    ){
-        composable(BottomNavItem.MoviePopular.route){
+    ) {
+        composable(BottomNavItem.MoviePopular.route) {
             val viewModel: MoviePopularViewModel = hiltViewModel()
             val uiState = viewModel.uiState
 
@@ -24,7 +24,7 @@ fun NavigationGraph(navController: NavHostController) {
                 uiState = uiState,
                 navigateToDetailMovie = {})
         }
-        composable(BottomNavItem.MovieSearch.route){
+        composable(BottomNavItem.MovieSearch.route) {
             val viewModel: MovieSearchViewModel = hiltViewModel()
             val uiState = viewModel.uiState
             val onEvent: (MovieSearchEvent) -> Unit = viewModel::event
@@ -39,7 +39,7 @@ fun NavigationGraph(navController: NavHostController) {
                 }
             )
         }
-        composable(BottomNavItem.MovieFavorite.route){
+        composable(BottomNavItem.MovieFavorite.route) {
 
         }
     }

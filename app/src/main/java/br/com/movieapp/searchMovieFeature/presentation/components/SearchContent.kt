@@ -61,7 +61,7 @@ fun SearchContent(
                 vertical = 8.dp
             )
         )
-        
+
         Spacer(modifier = Modifier.height(12.dp))
 
         LazyVerticalGrid(
@@ -74,20 +74,20 @@ fun SearchContent(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxSize()
         ) {
-            items(pagingMovies.itemCount){index ->
+            items(pagingMovies.itemCount) { index ->
                 val movie = pagingMovies[index]
                 movie?.let {
                     MovieItem(
                         voteAverage = it.voteAverage,
                         imageUrl = it.imageUrl,
                         id = it.id,
-                        onClick = {movieId -> onDetail(movieId) }
+                        onClick = { movieId -> onDetail(movieId) }
                     )
                 }
                 isLoading = false
             }
             pagingMovies.apply {
-                when{
+                when {
                     isLoading -> {
                         item(
                             span = {
@@ -97,26 +97,28 @@ fun SearchContent(
                             LoadingView()
                         }
                     }
+
                     loadState.refresh is LoadState.Error -> {
                         isLoading = false
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan)
                             }
-                        )  {
+                        ) {
                             ErrorScreen(
                                 message = "Verifique sua conexão com a internet",
                                 retry = { retry() }
                             )
                         }
                     }
+
                     loadState.append is LoadState.Error -> {
                         isLoading = false
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan)
                             }
-                        )  {
+                        ) {
                             ErrorScreen(
                                 message = "Verifique sua conexão com a internet",
                                 retry = { retry() }

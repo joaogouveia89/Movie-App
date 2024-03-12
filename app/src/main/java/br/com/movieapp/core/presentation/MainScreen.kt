@@ -19,8 +19,8 @@ fun MainScreen(navController: NavHostController) {
         bottomBar = {
             BottomNavigationBar(navController = navController)
         },
-        content = {paddingValues ->
-            Box(modifier = Modifier.padding(paddingValues)){
+        content = { paddingValues ->
+            Box(modifier = Modifier.padding(paddingValues)) {
                 NavigationGraph(navController = navController)
             }
         }
@@ -29,6 +29,6 @@ fun MainScreen(navController: NavHostController) {
 
 @Preview
 @Composable
-fun MainScreenPreview(){
+fun MainScreenPreview() {
     MainScreen(navController = rememberNavController())
 }

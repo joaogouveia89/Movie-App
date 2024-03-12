@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class MovieSearchRemoteDataSourceImpl @Inject constructor(
     private val service: MovieService
-): MovieSearchRemoteDataSource {
+) : MovieSearchRemoteDataSource {
     override fun getSearchMoviePagingSource(query: String): MovieSearchPagingSource =
         MovieSearchPagingSource(
             query = query,

@@ -33,7 +33,7 @@ fun MovieSearchScreen(
                 backgroundColor = black
             )
         },
-        content =  { paddingValues ->  
+        content = { paddingValues ->
             SearchContent(
                 paddingValues = paddingValues,
                 pagingMovies = pagingMovies,
@@ -44,7 +44,7 @@ fun MovieSearchScreen(
                 onEvent = {
                     onEvent(it)
                 },
-                onDetail = {movieId ->
+                onDetail = { movieId ->
                     navigateToDetailMovie(movieId)
                 }
             )
