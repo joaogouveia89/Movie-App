@@ -17,7 +17,7 @@ import br.com.movieapp.core.domain.model.Movie
 
 @Composable
 fun MovieContent(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     pagingMovies: LazyPagingItems<Movie>,
     paddingValues: PaddingValues,
     onClick: (movieId: Int) -> Unit
