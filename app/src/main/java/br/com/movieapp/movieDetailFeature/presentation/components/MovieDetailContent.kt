@@ -68,7 +68,7 @@ fun MovieDetailContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MovieDetailBackdropImage(
-                backgropStringUrl = movieDetails?.backdropPathUrl.toString(),
+                backdropStringUrl = movieDetails?.backdropPathUrl.toString(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
