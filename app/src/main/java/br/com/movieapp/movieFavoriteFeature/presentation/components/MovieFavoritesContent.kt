@@ -32,7 +32,7 @@ fun MovieFavoritesContent(
         modifier = modifier
             .background(black)
     ) {
-        if(movies.isEmpty()){
+        if (movies.isEmpty()) {
             Text(
                 text = stringResource(id = R.string.favorite_movies_empty),
                 fontSize = 18.sp,

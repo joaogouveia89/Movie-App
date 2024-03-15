@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import br.com.movieapp.R
 import br.com.movieapp.ui.theme.black
 import br.com.movieapp.ui.theme.white
 

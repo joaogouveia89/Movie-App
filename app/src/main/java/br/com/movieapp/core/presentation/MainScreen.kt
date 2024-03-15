@@ -19,7 +19,7 @@ import br.com.movieapp.core.presentation.navigation.currentRoute
 fun MainScreen(navController: NavHostController) {
     Scaffold(
         bottomBar = {
-            if(currentRoute(navHostController = navController) != DetailScreenNav.DetailScreen.route){
+            if (currentRoute(navHostController = navController) != DetailScreenNav.DetailScreen.route) {
                 BottomNavigationBar(navController = navController)
             }
         },

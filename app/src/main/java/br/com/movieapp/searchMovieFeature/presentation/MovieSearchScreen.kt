@@ -1,17 +1,12 @@
 package br.com.movieapp.searchMovieFeature.presentation
 
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.R
 import br.com.movieapp.core.presentation.components.common.MovieAppBar
 import br.com.movieapp.searchMovieFeature.presentation.components.SearchContent
 import br.com.movieapp.searchMovieFeature.presentation.state.MovieSearchState
-import br.com.movieapp.ui.theme.black
-import br.com.movieapp.ui.theme.white
 
 @Composable
 fun MovieSearchScreen(

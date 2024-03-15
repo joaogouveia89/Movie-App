@@ -35,7 +35,7 @@ class MovieDetailViewModel @Inject constructor(
     private val movieId = savedStateHandle.get<Int>(key = MOVIE_DETAIL_ARGUMENT_KEY)
 
     init {
-        movieId?.let {safeMovieId ->
+        movieId?.let { safeMovieId ->
             checkedFavorite(MovieDetailEvent.CheckedFavorite(safeMovieId))
             getMovieDetail(MovieDetailEvent.GetMovieDetail(safeMovieId))
         }
