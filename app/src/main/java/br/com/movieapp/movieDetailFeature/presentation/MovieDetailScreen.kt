@@ -47,7 +47,6 @@ fun MovieDetailScreen(
             )
         },
         content = {
-            // TODO: Test here call the block of code inside the LaunchedEffect
             MovieDetailContent(
                 movieDetails = uiState.movieDetails,
                 pagingMoviesSimilar = pagingMoviesSimilar,
