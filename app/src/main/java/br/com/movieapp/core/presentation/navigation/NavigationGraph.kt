@@ -72,15 +72,10 @@ fun NavigationGraph(navController: NavHostController) {
             val viewModel: MovieDetailViewModel = hiltViewModel()
             val uiState = viewModel.uiState
             val onAddFavorite = viewModel::onAddFavorite
-            val checkedFavorite = viewModel::checkedFavorite
-            val getMovieDetail = viewModel::getMovieDetail
 
             MovieDetailScreen(
-                id = it.arguments?.getInt(MOVIE_DETAIL_ARGUMENT_KEY),
                 uiState = uiState,
-                getMovieDetail = getMovieDetail,
-                onAddFavorite = onAddFavorite,
-                checkedFavorite = checkedFavorite
+                onAddFavorite = onAddFavorite
             )
         }
     }
