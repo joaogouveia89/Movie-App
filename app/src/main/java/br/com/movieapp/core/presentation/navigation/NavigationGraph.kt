@@ -9,6 +9,8 @@ import br.com.movieapp.core.presentation.navigation.BottomNavItem
 import br.com.movieapp.core.util.Constants.MOVIE_DETAIL_ARGUMENT_KEY
 import br.com.movieapp.movieDetailFeature.presentation.MovieDetailScreen
 import br.com.movieapp.movieDetailFeature.presentation.MovieDetailViewModel
+import br.com.movieapp.movieFavoriteFeature.presentation.MovieFavoritesScreen
+import br.com.movieapp.movieFavoriteFeature.presentation.MovieFavoritesViewModel
 import br.com.movieapp.moviePopularFeature.presentation.MoviePopularScreen
 import br.com.movieapp.moviePopularFeature.presentation.MoviePopularViewModel
 import br.com.movieapp.searchMovieFeature.presentation.MovieSearchEvent
@@ -47,7 +49,15 @@ fun NavigationGraph(navController: NavHostController) {
             )
         }
         composable(BottomNavItem.MovieFavorite.route) {
-
+            val viewModel: MovieFavoritesViewModel = hiltViewModel()
+            val uiState = viewModel.uiState
+            
+            MovieFavoritesScreen(
+                uiState = uiState,
+                navigateToDetailMovie = {
+                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
+                }
+            )
         }
 
         composable(
