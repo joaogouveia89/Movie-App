@@ -12,9 +12,10 @@ interface IsMovieFavoriteUseCase {
     suspend operator fun invoke(params: Params): Flow<ResultData<Boolean>>
     data class Params(val movieId: Int)
 }
+
 class IsMovieFavoriteUseCaseImpl @Inject constructor(
     private val movieFavoriteRepository: MovieFavoriteRepository
-): IsMovieFavoriteUseCase{
+) : IsMovieFavoriteUseCase {
     override suspend fun invoke(params: IsMovieFavoriteUseCase.Params): Flow<ResultData<Boolean>> =
         flow {
             val isFavorite: Boolean = movieFavoriteRepository.isFavorite(movieId = params.movieId)

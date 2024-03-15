@@ -30,7 +30,7 @@ object MovieFavoriteModule {
 
     @Provides
     @Singleton
-    fun provideMovieFavoriteRepository(localDataSource: MovieFavoriteLocalDataSource): MovieFavoriteRepository=
+    fun provideMovieFavoriteRepository(localDataSource: MovieFavoriteLocalDataSource): MovieFavoriteRepository =
         MovieFavoriteRepositoryImpl(localDataSource = localDataSource)
 
     @Provides

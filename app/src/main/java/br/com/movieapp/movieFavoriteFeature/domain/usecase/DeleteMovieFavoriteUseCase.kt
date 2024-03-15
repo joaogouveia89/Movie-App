@@ -16,7 +16,7 @@ interface DeleteMovieFavoriteUseCase {
 
 class DeleteMovieFavoriteUseCaseImpl @Inject constructor(
     private val movieFavoriteRepository: MovieFavoriteRepository
-): DeleteMovieFavoriteUseCase{
+) : DeleteMovieFavoriteUseCase {
     override suspend fun invoke(params: DeleteMovieFavoriteUseCase.Params): Flow<ResultData<Unit>> =
         flow {
             val delete: Unit = movieFavoriteRepository.delete(params.movie)

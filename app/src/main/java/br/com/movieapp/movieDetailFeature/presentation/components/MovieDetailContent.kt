@@ -110,12 +110,12 @@ fun MovieDetailContent(
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp)
             ) {
-                movieDetails?.genres?.forEach{genre ->
+                movieDetails?.genres?.forEach { genre ->
                     MovieDetailGenreTag(genre = genre)
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
-            
+
             MovieInfoContent(
                 movieDetails = movieDetails,
                 modifier = Modifier.fillMaxWidth()
@@ -148,7 +148,7 @@ fun MovieDetailContent(
                     .padding(horizontal = 8.dp)
             )
         }
-        if(isError.isNotEmpty()) {
+        if (isError.isNotEmpty()) {
             Text(
                 text = isError,
                 color = MaterialTheme.colors.error,
@@ -159,7 +159,7 @@ fun MovieDetailContent(
                     .align(Alignment.TopCenter)
             )
         }
-        if(isLoading){
+        if (isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier
                     .align(Alignment.TopCenter),

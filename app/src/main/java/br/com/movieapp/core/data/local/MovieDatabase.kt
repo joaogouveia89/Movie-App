@@ -10,6 +10,6 @@ import br.com.movieapp.core.data.local.entity.MovieEntity
     version = 1,
     exportSchema = false
 )
-abstract class MovieDatabase: RoomDatabase() {
+abstract class MovieDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
 }

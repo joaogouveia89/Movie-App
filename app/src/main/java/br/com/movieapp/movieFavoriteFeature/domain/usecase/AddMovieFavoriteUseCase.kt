@@ -16,7 +16,7 @@ interface AddMovieFavoriteUseCase {
 
 class AddMovieFavoriteUseCaseImpl @Inject constructor(
     private val movieFavoriteRepository: MovieFavoriteRepository
-): AddMovieFavoriteUseCase{
+) : AddMovieFavoriteUseCase {
     override suspend fun invoke(params: AddMovieFavoriteUseCase.Params): Flow<ResultData<Unit>> =
         flow {
             val insert: Unit = movieFavoriteRepository.insert(params.movie)

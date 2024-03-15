@@ -36,7 +36,7 @@ fun MovieFavoritesContent(
                     key = { item: Movie ->
                         item.id
                     }
-                ){movie ->
+                ) { movie ->
                     MovieFavoriteItem(
                         movie = movie,
                         onClick = onClick
@@ -49,7 +49,7 @@ fun MovieFavoritesContent(
 
 @Preview
 @Composable
-fun MovieFavoritesContentPreview(){
+fun MovieFavoritesContentPreview() {
     MovieFavoritesContent(
         modifier = Modifier,
         paddingValues = PaddingValues(),

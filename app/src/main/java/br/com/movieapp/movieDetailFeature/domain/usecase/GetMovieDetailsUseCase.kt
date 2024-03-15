@@ -2,7 +2,6 @@ package br.com.movieapp.movieDetailFeature.domain.usecase
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import br.com.movieapp.core.domain.model.Movie
 import br.com.movieapp.core.domain.model.MovieDetails
 import br.com.movieapp.core.util.ResultData
@@ -23,7 +22,7 @@ interface GetMovieDetailsUseCase {
 
 class GetMovieDetailsUseCaseImpl @Inject constructor(
     private val repository: MovieDetailsRepository
-): GetMovieDetailsUseCase{
+) : GetMovieDetailsUseCase {
     override fun invoke(params: GetMovieDetailsUseCase.Params): Flow<ResultData<Pair<Flow<PagingData<Movie>>, MovieDetails>>> =
         flow {
             try {
@@ -38,7 +37,7 @@ class GetMovieDetailsUseCaseImpl @Inject constructor(
                 )
 
                 emit(ResultData.Success(moviesSimilar to movieDetails))
-            }catch (exception: IOException) {
+            } catch (exception: IOException) {
                 emit(ResultData.Failure(exception))
             } catch (exception: HttpException) {
                 emit(ResultData.Failure(exception))

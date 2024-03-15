@@ -29,7 +29,7 @@ fun MovieDetailOverview(
     modifier: Modifier = Modifier,
     overView: String
 ) {
-    var expanded by remember{ mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier,
@@ -43,7 +43,7 @@ fun MovieDetailOverview(
             fontWeight = FontWeight.ExtraBold,
             fontSize = 20.sp
         )
-        if(expanded){
+        if (expanded) {
             Text(
                 text = overView,
                 color = Color.DarkGray,
@@ -51,7 +51,7 @@ fun MovieDetailOverview(
                 fontSize = 15.sp,
                 modifier = Modifier.clickable { expanded = !expanded }
             )
-        }else{
+        } else {
             Text(
                 text = overView,
                 color = Color.DarkGray,
@@ -70,7 +70,8 @@ fun MovieDetailOverview(
 fun MovieDetailOverviewPreview() {
     MovieDetailOverview(
         overView = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla bibendum massa et sollicitudin egestas. Fusce neque lacus, luctus nec augue eget, commodo hendrerit neque. Sed enim lorem, euismod ut quam vitae, suscipit hendrerit leo. Morbi quis enim ut nisl aliquam suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer suscipit mauris vitae feugiat malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras molestie sollicitudin condimentum. Phasellus aliquet ipsum vitae posuere pellentesque. Praesent et iaculis nibh, in.",
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = 8.dp)
     )
 }

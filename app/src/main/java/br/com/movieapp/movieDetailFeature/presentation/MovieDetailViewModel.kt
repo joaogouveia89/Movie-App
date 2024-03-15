@@ -25,80 +25,97 @@ class MovieDetailViewModel @Inject constructor(
     private val addMovieFavoriteUseCase: AddMovieFavoriteUseCase,
     private val deleteMovieFavoriteUseCase: DeleteMovieFavoriteUseCase,
     private val isMovieFavoriteUseCase: IsMovieFavoriteUseCase,
-): ViewModel() {
+) : ViewModel() {
     var uiState by mutableStateOf(MovieDetailState())
         private set
 
-    fun checkedFavorite(checkedFavorite: MovieDetailEvent.CheckedFavorite){
+    fun checkedFavorite(checkedFavorite: MovieDetailEvent.CheckedFavorite) {
         event(checkedFavorite)
     }
 
-    fun onAddFavorite(movie: Movie){
-        if(uiState.iconColor == Color.White){
+    fun onAddFavorite(movie: Movie) {
+        if (uiState.iconColor == Color.White) {
             event(MovieDetailEvent.AddFavorite(movie = movie))
-        }else{
+        } else {
             event(MovieDetailEvent.RemoveFavorite(movie = movie))
         }
     }
 
-    fun getMovieDetail(getMovieDetail: MovieDetailEvent.GetMovieDetail){
+    fun getMovieDetail(getMovieDetail: MovieDetailEvent.GetMovieDetail) {
         event(getMovieDetail)
     }
 
     private fun event(event: MovieDetailEvent) {
-        when(event){
+        when (event) {
             is MovieDetailEvent.AddFavorite -> {
                 viewModelScope.launch {
                     addMovieFavoriteUseCase.invoke(
                         params = AddMovieFavoriteUseCase.Params(event.movie)
-                    ).collectLatest {result ->
-                        when (result){
+                    ).collectLatest { result ->
+                        when (result) {
                             is ResultData.Success -> {
                                 uiState = uiState.copy(
                                     iconColor = Color.Red
                                 )
                             }
+
                             is ResultData.Failure -> {
-                                UtilFunctions.logError("DETAIL", "Erro ao cadastrar filme nos favoritos")
+                                UtilFunctions.logError(
+                                    "DETAIL",
+                                    "Erro ao cadastrar filme nos favoritos"
+                                )
                             }
+
                             is ResultData.Loading -> {}
                         }
                     }
                 }
             }
+
             is MovieDetailEvent.CheckedFavorite -> {
                 viewModelScope.launch {
                     isMovieFavoriteUseCase.invoke(
                         params = IsMovieFavoriteUseCase.Params(movieId = event.movieId)
-                    ).collectLatest {result ->
-                        when (result){
+                    ).collectLatest { result ->
+                        when (result) {
                             is ResultData.Success -> {
                                 uiState = uiState.copy(
-                                    iconColor = if(result.data) Color.Red else Color.White
+                                    iconColor = if (result.data) Color.Red else Color.White
                                 )
                             }
+
                             is ResultData.Failure -> {
-                                UtilFunctions.logError("DETAIL", "Erro ao atualizar filme nos favoritos")
+                                UtilFunctions.logError(
+                                    "DETAIL",
+                                    "Erro ao atualizar filme nos favoritos"
+                                )
                             }
+
                             is ResultData.Loading -> {}
                         }
                     }
                 }
             }
+
             is MovieDetailEvent.RemoveFavorite -> {
                 viewModelScope.launch {
                     deleteMovieFavoriteUseCase.invoke(
                         params = DeleteMovieFavoriteUseCase.Params(event.movie)
-                    ).collectLatest {result ->
-                        when (result){
+                    ).collectLatest { result ->
+                        when (result) {
                             is ResultData.Success -> {
                                 uiState = uiState.copy(
                                     iconColor = Color.White
                                 )
                             }
+
                             is ResultData.Failure -> {
-                                UtilFunctions.logError("DETAIL", "Erro ao remover filme nos favoritos")
+                                UtilFunctions.logError(
+                                    "DETAIL",
+                                    "Erro ao remover filme nos favoritos"
+                                )
                             }
+
                             is ResultData.Loading -> {}
                         }
                     }
@@ -111,8 +128,8 @@ class MovieDetailViewModel @Inject constructor(
                         params = GetMovieDetailsUseCase.Params(
                             movieId = event.movieId
                         )
-                    ).collect{resultData ->
-                        when(resultData){
+                    ).collect { resultData ->
+                        when (resultData) {
                             is ResultData.Success -> {
                                 uiState = uiState.copy(
                                     isLoading = false,
@@ -120,13 +137,18 @@ class MovieDetailViewModel @Inject constructor(
                                     results = resultData.data.first
                                 )
                             }
+
                             is ResultData.Failure -> {
                                 uiState = uiState.copy(
                                     isLoading = false,
                                     error = resultData.e.message.toString()
                                 )
-                                UtilFunctions.logError("DETAIL-ERROR", resultData.e.message.toString())
+                                UtilFunctions.logError(
+                                    "DETAIL-ERROR",
+                                    resultData.e.message.toString()
+                                )
                             }
+
                             is ResultData.Loading -> {
                                 uiState = uiState.copy(
                                     isLoading = true

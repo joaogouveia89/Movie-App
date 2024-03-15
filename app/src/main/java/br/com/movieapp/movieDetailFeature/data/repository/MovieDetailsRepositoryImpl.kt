@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class MovieDetailsRepositoryImpl @Inject constructor(
     private val remoteDataSource: MovieDetailRemoteDataSource
-): MovieDetailsRepository {
+) : MovieDetailsRepository {
     override suspend fun getMovieDetails(movieId: Int): MovieDetails =
         remoteDataSource.getMovieDetails(movieId)
 
@@ -22,6 +22,6 @@ class MovieDetailsRepositoryImpl @Inject constructor(
     ): Flow<PagingData<Movie>> =
         Pager(
             config = pagingConfig,
-            pagingSourceFactory = { remoteDataSource.getSimilarMoviesPagingSource(movieId = movieId)}
+            pagingSourceFactory = { remoteDataSource.getSimilarMoviesPagingSource(movieId = movieId) }
         ).flow
 }

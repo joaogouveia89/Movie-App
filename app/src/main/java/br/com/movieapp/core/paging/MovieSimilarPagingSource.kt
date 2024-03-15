@@ -11,7 +11,7 @@ import java.io.IOException
 class MovieSimilarPagingSource(
     private val remoteDataSource: MovieDetailRemoteDataSource,
     private val movieId: Int
-): PagingSource<Int, Movie>() {
+) : PagingSource<Int, Movie>() {
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? =
         state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
@@ -33,7 +33,7 @@ class MovieSimilarPagingSource(
                 prevKey = if (pageNumber == 1) null else pageNumber - 1,
                 nextKey = if (movies.isEmpty()) null else pageNumber + 1
             )
-        }catch (exception: IOException) {
+        } catch (exception: IOException) {
             return LoadResult.Error(exception)
         } catch (exception: HttpException) {
             return LoadResult.Error(exception)

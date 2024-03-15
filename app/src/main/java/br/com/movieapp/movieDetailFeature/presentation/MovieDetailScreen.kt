@@ -28,7 +28,7 @@ fun MovieDetailScreen(
 
     // creates a separate flow
     LaunchedEffect(key1 = true) {
-        if(id != null){
+        if (id != null) {
             getMovieDetail(MovieDetailEvent.GetMovieDetail(id))
             checkedFavorite(MovieDetailEvent.CheckedFavorite(id))
         }

@@ -40,19 +40,20 @@ fun MovieFavoriteItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(black),
-            verticalArrangement =  Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
             ) {
-                AsyncImage(model = ImageRequest.Builder(LocalContext.current)
-                    .data(movie.imageUrl)
-                    .crossfade(true)
-                    .error(R.drawable.ic_error_image)
-                    .placeholder(R.drawable.ic_placeholder)
-                    .build(),
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(movie.imageUrl)
+                        .crossfade(true)
+                        .error(R.drawable.ic_error_image)
+                        .placeholder(R.drawable.ic_placeholder)
+                        .build(),
                     contentDescription = "",
                     contentScale = ContentScale.FillWidth,
                     modifier = Modifier.fillMaxWidth()
@@ -72,7 +73,7 @@ fun MovieFavoriteItem(
 
 @Preview
 @Composable
-fun MovieFavoriteItemPreview(){
+fun MovieFavoriteItemPreview() {
     MovieFavoriteItem(
         movie = Movie(
             id = 1,

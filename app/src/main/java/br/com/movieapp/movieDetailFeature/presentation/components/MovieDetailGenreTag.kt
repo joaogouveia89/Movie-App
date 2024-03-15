@@ -25,7 +25,7 @@ fun MovieDetailGenreTag(
                 shape = RoundedCornerShape(100.dp)
             )
             .padding(10.dp)
-    ){
+    ) {
         Text(
             text = genre,
             color = white,
@@ -37,6 +37,6 @@ fun MovieDetailGenreTag(
 
 @Preview
 @Composable
-fun MovieDetailGenreTagPreview(){
+fun MovieDetailGenreTagPreview() {
     MovieDetailGenreTag("Action")
 }

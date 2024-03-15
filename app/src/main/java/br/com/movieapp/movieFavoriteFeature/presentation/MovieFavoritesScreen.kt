@@ -31,11 +31,11 @@ fun MovieFavoritesScreen(
                 backgroundColor = black
             )
         },
-        content = {paddingValues ->
+        content = { paddingValues ->
             MovieFavoritesContent(
                 paddingValues = paddingValues,
                 movies = movies,
-                onClick = {movieId ->
+                onClick = { movieId ->
                     navigateToDetailMovie(movieId)
                 }
             )
@@ -45,7 +45,7 @@ fun MovieFavoritesScreen(
 
 @Preview
 @Composable
-fun MovieFavoritesScreenPreview(){
+fun MovieFavoritesScreenPreview() {
     MovieFavoritesScreen(
         uiState = MovieFavoriteState(),
         navigateToDetailMovie = {}

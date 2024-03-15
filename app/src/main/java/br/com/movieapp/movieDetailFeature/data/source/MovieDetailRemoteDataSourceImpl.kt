@@ -1,7 +1,6 @@
 package br.com.movieapp.movieDetailFeature.data.source
 
 import br.com.movieapp.core.data.remote.MovieService
-import br.com.movieapp.core.data.remote.response.MovieDetailResponse
 import br.com.movieapp.core.data.remote.response.MovieResponse
 import br.com.movieapp.core.domain.model.MovieDetails
 import br.com.movieapp.core.paging.MovieSimilarPagingSource
@@ -11,8 +10,8 @@ import javax.inject.Inject
 
 class MovieDetailRemoteDataSourceImpl @Inject constructor(
     private val service: MovieService
-): MovieDetailRemoteDataSource {
-    override suspend fun getMovieDetails(movieId: Int): MovieDetails{
+) : MovieDetailRemoteDataSource {
+    override suspend fun getMovieDetails(movieId: Int): MovieDetails {
         val response = service.getMovie(movieId = movieId)
         val genres = response.genres.map { it.name }
         return MovieDetails(

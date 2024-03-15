@@ -27,7 +27,7 @@ fun MovieInfoContent(
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = modifier
-    ){
+    ) {
         MovieInfo(
             name = stringResource(id = R.string.vote_average),
             value = movieDetails?.voteAverage.toString()
@@ -45,6 +45,7 @@ fun MovieInfoContent(
         )
     }
 }
+
 @Composable
 fun MovieInfo(
     name: String,

@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class MovieFavoriteRepositoryImpl @Inject constructor(
     private val localDataSource: MovieFavoriteLocalDataSource
-): MovieFavoriteRepository {
+) : MovieFavoriteRepository {
     override fun getMovies(): Flow<List<Movie>> =
         localDataSource.getMovies()
 

@@ -51,7 +51,7 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItem.MovieFavorite.route) {
             val viewModel: MovieFavoritesViewModel = hiltViewModel()
             val uiState = viewModel.uiState
-            
+
             MovieFavoritesScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
@@ -63,12 +63,12 @@ fun NavigationGraph(navController: NavHostController) {
         composable(
             route = BottomNavItem.MovieDetails.route,
             arguments = listOf(
-                navArgument(MOVIE_DETAIL_ARGUMENT_KEY){
+                navArgument(MOVIE_DETAIL_ARGUMENT_KEY) {
                     type = NavType.IntType
                     defaultValue = 0
                 }
             )
-        ){
+        ) {
             val viewModel: MovieDetailViewModel = hiltViewModel()
             val uiState = viewModel.uiState
             val onAddFavorite = viewModel::onAddFavorite

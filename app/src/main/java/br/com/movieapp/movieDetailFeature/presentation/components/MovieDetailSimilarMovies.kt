@@ -26,7 +26,7 @@ fun MovieDetailSimilarMovies(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
     ) {
-        items(pagingMoviesSimilar.itemCount){index ->
+        items(pagingMoviesSimilar.itemCount) { index ->
             val movie = pagingMoviesSimilar[index]
 
             movie?.let {
@@ -41,11 +41,11 @@ fun MovieDetailSimilarMovies(
             }
         }
         pagingMoviesSimilar.apply {
-            when{
+            when {
                 loadState.refresh is LoadState.Loading -> {
                     item(span = {
                         GridItemSpan(maxLineSpan)
-                    }){
+                    }) {
                         LoadingView()
                     }
                 }
@@ -53,7 +53,7 @@ fun MovieDetailSimilarMovies(
                 loadState.append is LoadState.Loading -> {
                     item(span = {
                         GridItemSpan(maxLineSpan)
-                    }){
+                    }) {
                         LoadingView()
                     }
                 }
@@ -63,23 +63,24 @@ fun MovieDetailSimilarMovies(
 
                     item(span = {
                         GridItemSpan(maxLineSpan)
-                    }){
+                    }) {
                         ErrorScreen(
                             message = error.error.message.toString()
-                        ){
+                        ) {
                             retry()
                         }
                     }
                 }
+
                 loadState.append is LoadState.Error -> {
                     val error = pagingMoviesSimilar.loadState.append as LoadState.Error
 
                     item(span = {
                         GridItemSpan(maxLineSpan)
-                    }){
+                    }) {
                         ErrorScreen(
                             message = error.error.message.toString()
-                        ){
+                        ) {
                             retry()
                         }
                     }

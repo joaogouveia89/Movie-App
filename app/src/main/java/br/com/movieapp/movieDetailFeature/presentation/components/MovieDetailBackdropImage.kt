@@ -18,13 +18,14 @@ fun MovieDetailBackdropImage(
     backgropStringUrl: String,
     modifier: Modifier
 ) {
-    Box(modifier = modifier){
-        AsyncImage(model = ImageRequest.Builder(LocalContext.current)
-            .data(backgropStringUrl)
-            .crossfade(true)
-            .error(R.drawable.ic_error_image)
-            .placeholder(R.drawable.ic_placeholder)
-            .build(),
+    Box(modifier = modifier) {
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(backgropStringUrl)
+                .crossfade(true)
+                .error(R.drawable.ic_error_image)
+                .placeholder(R.drawable.ic_placeholder)
+                .build(),
             contentDescription = "",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxWidth()
@@ -34,10 +35,11 @@ fun MovieDetailBackdropImage(
 
 @Preview
 @Composable
-fun MovieDetailBackdropImagePreview(){
+fun MovieDetailBackdropImagePreview() {
     MovieDetailBackdropImage(
         backgropStringUrl = "",
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .height(200.dp)
     )
 }
