@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import br.com.movieapp.core.presentation.navigation.BottomNavItem
+import br.com.movieapp.core.presentation.navigation.DetailScreenNav
 import br.com.movieapp.core.util.Constants.MOVIE_DETAIL_ARGUMENT_KEY
 import br.com.movieapp.movieDetailFeature.presentation.MovieDetailScreen
 import br.com.movieapp.movieDetailFeature.presentation.MovieDetailViewModel
@@ -30,7 +31,7 @@ fun NavigationGraph(navController: NavHostController) {
             MoviePopularScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
-                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(it))
+                    navController.navigate(DetailScreenNav.DetailScreen.passMovieId(it))
                 })
         }
         composable(BottomNavItem.MovieSearch.route) {
@@ -44,7 +45,7 @@ fun NavigationGraph(navController: NavHostController) {
                 onEvent = onEvent,
                 onFetch = onFetch,
                 navigateToDetailMovie = {
-                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(it))
+                    navController.navigate(DetailScreenNav.DetailScreen.passMovieId(it))
                 }
             )
         }
@@ -55,13 +56,13 @@ fun NavigationGraph(navController: NavHostController) {
             MovieFavoritesScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
-                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
+                    navController.navigate(DetailScreenNav.DetailScreen.passMovieId(movieId = it))
                 }
             )
         }
 
         composable(
-            route = BottomNavItem.MovieDetails.route,
+            route = DetailScreenNav.DetailScreen.route,
             arguments = listOf(
                 navArgument(MOVIE_DETAIL_ARGUMENT_KEY) {
                     type = NavType.IntType

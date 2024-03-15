@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import br.com.movieapp.ui.theme.black
@@ -58,6 +59,12 @@ fun BottomNavigationBar(
             )
         }
     }
+}
+
+@Composable
+fun currentRoute(navHostController: NavHostController): String?{
+    val navBackStackEntry by navHostController.currentBackStackEntryAsState()
+    return navBackStackEntry?.destination?.route
 }
 
 @Preview
