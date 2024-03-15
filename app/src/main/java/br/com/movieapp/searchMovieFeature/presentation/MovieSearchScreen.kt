@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.R
+import br.com.movieapp.core.presentation.components.common.MovieAppBar
 import br.com.movieapp.searchMovieFeature.presentation.components.SearchContent
 import br.com.movieapp.searchMovieFeature.presentation.state.MovieSearchState
 import br.com.movieapp.ui.theme.black
@@ -23,14 +24,8 @@ fun MovieSearchScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(id = R.string.search_movies),
-                        color = white
-                    )
-                },
-                backgroundColor = black
+            MovieAppBar(
+                title = R.string.search_movies
             )
         },
         content = { paddingValues ->
