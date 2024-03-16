@@ -2,16 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MovieDaoTest">
-        <State />
-      </entry>
-      <entry key="Tests in 'br.com.movieapp'">
-        <State />
-      </entry>
       <entry key="app">
-        <State />
-      </entry>
-      <entry key="deleteMovie_should_delete_a_movie_successfully()">
         <State />
       </entry>
     </value>
