@@ -48,7 +48,6 @@ class MovieDaoTest {
         movieDao = database.movieDao()
     }
 
-
     @Test
     fun getMovies_should_return_list_of_movies_test() = runTest {
         // Given - Nothing
@@ -59,7 +58,6 @@ class MovieDaoTest {
         // Then
         assertThat(movies.size).isEqualTo(0)
     }
-
     @Test
     fun getMovies_should_return_ordered_by_id_movie_list_test() = runTest {
         // Given
@@ -76,7 +74,6 @@ class MovieDaoTest {
         assertThat(movies.size).isEqualTo(movieEntityList.size)
         assertThat(resultIndexes).isEqualTo(expectedIndexes)
     }
-
     @Test
     fun insertMovie_should_insert_a_movie_successfully_test() = runTest{
         // Given
@@ -93,7 +90,6 @@ class MovieDaoTest {
 
         assertThat(resultMovie).isEqualTo(expectedMovie)
     }
-
     @Test
     fun isFavorite_should_return_a_favorite_movie_when_movie_is_marked_as_favorite_test() = runTest {
         // Given
@@ -109,7 +105,6 @@ class MovieDaoTest {
         // Then
         assertThat(result).isEqualTo(favoriteMovie)
     }
-
     @Test
     fun isFavorite_should_return_null_when_movie_is_not_marked_as_favorite_test() = runTest {
         // Given
@@ -122,6 +117,34 @@ class MovieDaoTest {
 
         // Then
         assertThat(result).isNull()
+    }
+    @Test
+    fun updateMovie_should_updated_a_movie_successfully() = runTest {
+        // Given
+        val movieEntity = movieEntityList.first()
+        movieDao.insertMovie(movieEntity)
+        val allMovies = movieDao.getMovies().first()
+        val updateMovie = allMovies[0].copy(title = "Updated Movie")
+
+        // When
+        movieDao.insertMovie(updateMovie)
+
+        // Then
+        val movies = movieDao.getMovies().first()
+        assertThat(movies[0]).isEqualTo(updateMovie)
+    }
+    @Test
+    fun deleteMovie_should_delete_a_movie_successfully() = runTest {
+        // Given
+        val movieEntity = movieEntityList.first()
+        movieDao.insertMovie(movieEntity)
+
+        // When
+        movieDao.deleteMovie(movieEntity)
+
+        // Then
+        val movies = movieDao.getMovies().first()
+        assertThat(movies).isEmpty()
     }
 
     @After
