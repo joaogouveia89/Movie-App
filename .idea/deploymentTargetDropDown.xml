@@ -14,9 +14,6 @@
       <entry key="deleteMovie_should_delete_a_movie_successfully()">
         <State />
       </entry>
-      <entry key="updateMovie_should_updated_a_movie_successfully()">
-        <State />
-      </entry>
     </value>
   </component>
 </project>
