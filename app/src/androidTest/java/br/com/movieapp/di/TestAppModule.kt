@@ -1,4 +1,4 @@
-package di
+package br.com.movieapp.di
 
 import android.content.Context
 import androidx.room.Room
