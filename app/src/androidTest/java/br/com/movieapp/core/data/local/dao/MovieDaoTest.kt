@@ -43,7 +43,7 @@ class MovieDaoTest {
 
 
     @Test
-    fun getMoviesTest() = runTest {
+    fun getMovies_should_return_list_of_movies_test() = runTest {
         // Given - Nothing
 
         // When
@@ -54,7 +54,7 @@ class MovieDaoTest {
     }
 
     @Test
-    fun getMovies_orderedByIdTest() = runTest {
+    fun getMovies_should_return_ordered_by_id_movie_list_test() = runTest {
         // Given
         val movieEntities = listOf(
             MovieEntity(movieId = 4, title = "Movie 4", imageUrl = "Url4"),
