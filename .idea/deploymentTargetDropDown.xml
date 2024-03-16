@@ -8,13 +8,16 @@
       <entry key="MovieDaoTest">
         <State />
       </entry>
-      <entry key="RatingBarPreview">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
       <entry key="getMovies_orderedById()">
+        <State />
+      </entry>
+      <entry key="getMovies_should_return_ordered_by_id_movie_list_test()">
+        <State />
+      </entry>
+      <entry key="insertMovie_should_insert_a_movie_successfully_test()">
         <State />
       </entry>
     </value>

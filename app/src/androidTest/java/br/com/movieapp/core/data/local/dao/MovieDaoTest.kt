@@ -35,6 +35,13 @@ class MovieDaoTest {
 
     private lateinit var movieDao: MovieDao
 
+    private val movieEntityList = listOf(
+        MovieEntity(movieId = 4, title = "Movie 4", imageUrl = "Url4"),
+        MovieEntity(movieId = 1, title = "Movie 1", imageUrl = "Url1"),
+        MovieEntity(movieId = 3, title = "Movie 3", imageUrl = "Url3"),
+        MovieEntity(movieId = 2, title = "Movie 2", imageUrl = "Url2")
+    )
+
     @Before
     fun setup(){
         hiltRule.inject()
@@ -56,16 +63,9 @@ class MovieDaoTest {
     @Test
     fun getMovies_should_return_ordered_by_id_movie_list_test() = runTest {
         // Given
-        val movieEntities = listOf(
-            MovieEntity(movieId = 4, title = "Movie 4", imageUrl = "Url4"),
-            MovieEntity(movieId = 1, title = "Movie 1", imageUrl = "Url1"),
-            MovieEntity(movieId = 3, title = "Movie 3", imageUrl = "Url3"),
-            MovieEntity(movieId = 2, title = "Movie 2", imageUrl = "Url2")
-        )
+        addMultipleMovies(movieEntityList)
 
-        addMultipleMovies(movieEntities)
-
-        val expectedIndexes = movieEntities.map { it.movieId }.sorted()
+        val expectedIndexes = movieEntityList.map { it.movieId }.sorted()
 
         // When
         val movies = movieDao.getMovies().first()
@@ -73,8 +73,25 @@ class MovieDaoTest {
 
 
         // Then
-        assertThat(movies.size).isEqualTo(movieEntities.size)
+        assertThat(movies.size).isEqualTo(movieEntityList.size)
         assertThat(resultIndexes).isEqualTo(expectedIndexes)
+    }
+
+    @Test
+    fun insertMovie_should_insert_a_movie_successfully_test() = runTest{
+        // Given
+        val expectedMovie = movieEntityList.first()
+
+        // When
+        movieDao.insertMovie(expectedMovie)
+
+        // Then
+        val resultMovie = movieDao
+            .getMovies()
+            .first()
+            .first()
+        
+        assertThat(resultMovie).isEqualTo(expectedMovie)
     }
 
     @After
