@@ -90,8 +90,38 @@ class MovieDaoTest {
             .getMovies()
             .first()
             .first()
-        
+
         assertThat(resultMovie).isEqualTo(expectedMovie)
+    }
+
+    @Test
+    fun isFavorite_should_return_a_favorite_movie_when_movie_is_marked_as_favorite_test() = runTest {
+        // Given
+        val favoriteMovie = movieEntityList
+            .first()
+            .copy(movieId = 5321)
+
+        movieDao.insertMovie(favoriteMovie)
+
+        // When
+        val result = movieDao.isFavorite(favoriteMovie.movieId)
+
+        // Then
+        assertThat(result).isEqualTo(favoriteMovie)
+    }
+
+    @Test
+    fun isFavorite_should_return_null_when_movie_is_not_marked_as_favorite_test() = runTest {
+        // Given
+        val favoriteMovie = movieEntityList
+            .first()
+            .copy(movieId = 5321)
+
+        // When
+        val result = movieDao.isFavorite(favoriteMovie.movieId)
+
+        // Then
+        assertThat(result).isNull()
     }
 
     @After

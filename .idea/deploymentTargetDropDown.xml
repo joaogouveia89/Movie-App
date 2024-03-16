@@ -2,22 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="ExampleInstrumentedTest">
-        <State />
-      </entry>
       <entry key="MovieDaoTest">
         <State />
       </entry>
       <entry key="app">
         <State />
       </entry>
-      <entry key="getMovies_orderedById()">
-        <State />
-      </entry>
       <entry key="getMovies_should_return_ordered_by_id_movie_list_test()">
         <State />
       </entry>
       <entry key="insertMovie_should_insert_a_movie_successfully_test()">
+        <State />
+      </entry>
+      <entry key="isFavorite_should_return_a_favorite_movie_when_movie_is_marked_as_favorite_test()">
+        <State />
+      </entry>
+      <entry key="isFavorite_should_return_null_when_movie_is_not_marked_as_favorite_test()">
         <State />
       </entry>
     </value>
