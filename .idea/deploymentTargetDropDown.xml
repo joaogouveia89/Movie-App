@@ -5,16 +5,13 @@
       <entry key="MovieDaoTest">
         <State />
       </entry>
+      <entry key="Tests in 'br.com.movieapp'">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>
       <entry key="deleteMovie_should_delete_a_movie_successfully()">
-        <State />
-      </entry>
-      <entry key="isFavorite_should_return_a_favorite_movie_when_movie_is_marked_as_favorite_test()">
-        <State />
-      </entry>
-      <entry key="isFavorite_should_return_null_when_movie_is_not_marked_as_favorite_test()">
         <State />
       </entry>
       <entry key="updateMovie_should_updated_a_movie_successfully()">
