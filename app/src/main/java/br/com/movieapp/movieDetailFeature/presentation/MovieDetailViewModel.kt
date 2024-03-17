@@ -41,7 +41,7 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
-    private fun checkedFavorite(checkedFavorite: MovieDetailEvent.CheckedFavorite) {
+    fun checkedFavorite(checkedFavorite: MovieDetailEvent.CheckedFavorite) {
         event(checkedFavorite)
     }
 
