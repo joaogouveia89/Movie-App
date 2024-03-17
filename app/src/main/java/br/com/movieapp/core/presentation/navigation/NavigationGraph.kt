@@ -1,5 +1,6 @@
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -51,13 +52,11 @@ fun NavigationGraph(navController: NavHostController) {
         }
         composable(BottomNavItem.MovieFavorite.route) {
             val viewModel: MovieFavoritesViewModel = hiltViewModel()
-            val uiState = viewModel.uiState
+            val uiState = viewModel.uiState.movies.collectAsStateWithLifecycle(initialValue = emptyList())
 
             MovieFavoritesScreen(
-                uiState = uiState,
-                navigateToDetailMovie = {
-                    navController.navigate(DetailScreenNav.DetailScreen.passMovieId(movieId = it))
-                }
+                movies = uiState.value,
+                navigateToDetailMovie = { navController.navigate(DetailScreenNav.DetailScreen.passMovieId(movieId = it)) }
             )
         }
 
